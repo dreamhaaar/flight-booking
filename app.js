@@ -1,7 +1,8 @@
 const express = require("express");
-const path = require("path");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
+
+const path = require("path");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -35,7 +36,7 @@ app.post("/billing-statement", (req, res) => {
 
   const amountBlockTime = totalBlockTimeMin * paymentPerMin;
   const amountLandingFee = landingFeePerCycle * 5000;
-  const amountTerminalFee = (noPrincipal.length) * 500;
+  const amountTerminalFee = noPrincipal.length * 500;
 
   let amountAddCycle;
   if (addCycle == 1) {
@@ -46,14 +47,13 @@ app.post("/billing-statement", (req, res) => {
     amountAddCycle = 0;
   }
 
-  const sumBill = amountBlockTime + amountLandingFee + amountTerminalFee + amountAddCycle;
+  const sumBill =
+    amountBlockTime + amountLandingFee + amountTerminalFee + amountAddCycle;
   console.log(formData);
   // Render page with both formData and sumBill
   res.render("bill", { data: formData, sumBill: sumBill });
 });
 
-
-app.listen(port, (req, res) => {
-  console.log(`Port ${port} running`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
