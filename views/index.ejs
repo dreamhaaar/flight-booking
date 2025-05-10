@@ -63,7 +63,7 @@
       <h3 class="text-xl font-semibold mb-4">Client Information</h3>
 
       <!--INPUT FIELDS-->
-      <div class="flex grid grid-cols-2 gap-5 p-2">
+      <div class="grid grid-cols-2 gap-5 p-2">
         <div class="flex flex-col">
           <label for="first-name">First name<span class="text-red-600"> *</span></label>
           <input name="first-name" id="first-name" type="text"
@@ -218,9 +218,10 @@
 
       </div>
     </section>
-    <!--SUBMIT BUTTON-->
-    <div class="mt-4 text-right w-full">
-      <button id="submit-btn" name="submit-btn" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+
+        <!--SUBMIT BUTTON-->
+    <div class="mt-4 text-right w-full flex justify-center">
+      <button id="submit-btn" name="submit-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         onclick="validatePrincipalsSelection()">
         Continue to Billing
       </button>
