@@ -15,8 +15,8 @@
     <div class="flex items-center space-x-4">
       <img src="/images/logo.png" alt="Logo" class="logo-header w-14" />
 
-        <h1 class="text-2xl sm:text-2xl font-bold hover:underline">RP-C8851</h1>
-   
+      <h1 class="text-2xl sm:text-2xl font-bold hover:underline">RP-C8851</h1>
+
     </div>
 
     <!-- Navbar Links (Desktop) -->
@@ -185,7 +185,7 @@
       <div class="grid grid-cols-2 gap-6 p-2">
         <div class="mb-4">
           <label for="block-time" class="">Total Block time in Hour/s <span class="text-red-600"> *</span></label>
-          <input type="text" id="block-time" name="block-time" autocomplete="off"
+          <input type="number" inputmode="numeric" id="block-time" name="block-time" autocomplete="off"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span class="text-xs">Block Time x P65,000.00 per hour</span>
@@ -203,7 +203,7 @@
 
         <div class="mb-4">
           <label for="take-off-land-fee" class="">Take-off and Landing Fee<span class="text-red-600"> *</span></label>
-          <input type="text" id="take-off-land-fee" name="take-off-land-fee" autocomplete="off"
+          <input type="number" inputmode="numeric" id="take-off-land-fee" name="take-off-land-fee" autocomplete="off"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span class="text-xs">Fixed at P5,000.00 for 1 cycle</span>
@@ -214,7 +214,7 @@
 
         <div class="mb-4">
           <label for="add-cycle" class="">Additional Cycle/s</label>
-          <input type="text" id="add-cycle" name="add-cycle"
+          <input type="number" inputmode="numeric" id="add-cycle" name="add-cycle"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <span class="text-xs">For more than 1 cycle (No. of Cycle less 1 x P2,000.00 per
             cycle)</span>
