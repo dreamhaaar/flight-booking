@@ -56,6 +56,11 @@ app.post("/billing-statement", (req, res) => {
   res.render("bill", { data: formData, sumBill: sumBill });
 });
 
+app.get("/billing-statement", (req, res) => {
+  res.redirect("/");
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

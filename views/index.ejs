@@ -10,23 +10,45 @@
 
 <body class="bg-gray-100 text-gray-800 font-sans">
   <!-- Navbar -->
-  <header class="bg-white shadow p-3 flex justify-between items-center">
-    <div class="flex space-x-4 items-center justify-center">
-      <img src="/images/logo.png" alt="" class="logo-header w-14" />
-      <h1 class="text-2xl font-bold center">RP-C8851</h1>
+ <header class="bg-white shadow p-3 flex justify-between items-center">
+    <!-- Logo and RP-C8851 Text -->
+    <div class="flex items-center space-x-4">
+      <img src="/images/logo.png" alt="Logo" class="logo-header w-14" />
+      <h1 class="text-2xl sm:text-2xl font-bold hover:underline">RP-C8851</h1>
     </div>
 
-    <nav class="space-x-4">
-      <li class="space-x-6 text-xl font-semibold flex">
-        <ul>
-          Book a Flight
-        </ul>
-        <ul>
-          Contact Us
-        </ul>
-      </li>
+    <!-- Navbar Links (Desktop) -->
+    <nav class="hidden sm:flex space-x-6 text-2xl sm:text-xl  font-bold ">
+      <ul>
+        <li class="hover:underline">Book a Flight</li>
+      </ul>
+      <ul>
+        <li class="hover:underline">Contact Us</li>
+      </ul>
     </nav>
-  </header>
+
+    <!-- Hamburger Menu (Mobile) -->
+    <div class="flex sm:hidden ml-auto p-4 relative">
+      <button id="menu-button" type="button">
+        <!-- Hamburger Icon -->
+        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <div id="dropdown-menu"
+        class="bg-gray-100 bg-opacity-100 hidden absolute top-full right-0 rounded-md shadow-lg w-40 z-20 text-shadow-lg">
+        <ul class="flex flex-col">
+          <li><a href="#book-a-flight" class="block px-2 py-2 hover:bg-black hover:text-white">Book a Flight</a></li>
+          <li><a href="#contact-us" class="block px-2 py-2 hover:bg-black hover:text-white">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+</header>
+
+
 
   <form method="POST" action="/billing-statement" id="main-form">
     <!-- BOOK FLIGHT -->
@@ -34,23 +56,26 @@
       <h2 class="text-xl font-semibold mb-4 text-center">
         FLIGHT EXPENSES 2025
       </h2>
-      <h2 class="text-xl font-semibold mb-4">RP-C8851 BELL 505</h2>
+      <h2 class="text-xl font-semibold mb-4 sm:text-lg">RP-C8851 BELL 505</h2>
 
       <!--INPUT FIELDS-->
       <div class="grid grid-cols-3 gap-5 p-2">
         <div class="flex flex-col">
-          <input name="from-location" id="from-location" type="text" placeholder="From (e.g. Cebu)"
+          <p>From <span class="text-red-600"> *</span></p>
+          <input name="from-location" id="from-location" type="text" placeholder="e.g. Cebu"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span id="error-msg1" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
         </div>
         <div class="flex flex-col">
-          <input name="to-location" id="to-location" type="text" placeholder="To (e.g. Manila)"
+           <p>To <span class="text-red-600"> *</span></p>
+          <input name="to-location" id="to-location" type="text" placeholder="e.g. Manila"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span id="error-msg2" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
         </div>
         <div class="flex flex-col">
+           <p>Flight Date <span class="text-red-600"> *</span></p>
           <input name="date-sched" id="date" type="date"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
@@ -106,23 +131,28 @@
       <!--HOLDER-->
       <div class="grid grid-cols-2 gap-3 p-2">
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input name="checkbox-1" id="checkbox-1" type="checkbox" value="Jojo Alquizola" class="accent-gray-800 principal-checkbox" />
+          <input name="checkbox-1" id="checkbox-1" type="checkbox" value="Jojo Alquizola"
+            class="accent-gray-800 principal-checkbox" />
           <label for="checkbox-1" class="text-l text-white">Jojo Alquizola</label>
         </div>
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input name="checkbox-2" id="checkbox-2" type="checkbox" value="Allan Quirante" class="accent-gray-800 principal-checkbox" />
+          <input name="checkbox-2" id="checkbox-2" type="checkbox" value="Allan Quirante"
+            class="accent-gray-800 principal-checkbox" />
           <label for="checkbox-2" class="text-l text-white">Allan Quirante</label>
         </div>
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input name="checkbox-3" id="checkbox-3" type="checkbox" value="Jonathan Quirante" class="accent-gray-800 principal-checkbox" />
+          <input name="checkbox-3" id="checkbox-3" type="checkbox" value="Jonathan Quirante"
+            class="accent-gray-800 principal-checkbox" />
           <label for="checkbox-3" class="text-l text-white">Jonathan Quirante</label>
         </div>
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input name="checkbox-4" id="checkbox-4" type="checkbox" value="Janleven Quirante" class="accent-gray-800 principal-checkbox" />
+          <input name="checkbox-4" id="checkbox-4" type="checkbox" value="Janleven Quirante"
+            class="accent-gray-800 principal-checkbox" />
           <label for="checkbox-4" class="text-l text-white">Janleven Quirante</label>
         </div>
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input name="checkbox-5" id="checkbox-5" type="checkbox" value="QM Builders" class="accent-gray-800 principal-checkbox" />
+          <input name="checkbox-5" id="checkbox-5" type="checkbox" value="QM Builders"
+            class="accent-gray-800 principal-checkbox" />
           <label for="checkbox-5" class="text-l text-white">QM Builders</label>
         </div>
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
@@ -132,7 +162,8 @@
         </div>
 
         <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
-          <input type="checkbox" id="checkbox-7" name="checkbox-7" class="text-white accent-gray-800 principal-checkbox" />
+          <input type="checkbox" id="checkbox-7" name="checkbox-7"
+            class="text-white accent-gray-800 principal-checkbox" />
           <input type="text" id="other-text" name="other-text" placeholder="Other"
             class="w-full outline-none text-white placeholder-white bg-transparent" />
         </div>
@@ -156,7 +187,8 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span class="text-xs">Block Time x P65,000.00 per hour</span>
-          <div id="error-message-block-time" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          <div id="error-message-block-time" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours.
+            Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
           </div>
         </div>
 
@@ -173,7 +205,8 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required />
           <span class="text-xs">Fixed at P5,000.00 for 1 cycle</span>
-          <div id="error-message-take-off" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          <div id="error-message-take-off" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours.
+            Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
           </div>
         </div>
 
@@ -183,15 +216,15 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <span class="text-xs">For more than 1 cycle (No. of Cycle less 1 x P2,000.00 per
             cycle)</span>
-          <div id="error-add-cycle" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          <div id="error-add-cycle" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use
+            decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
           </div>
         </div>
 
         <div class="mb-4">
           <label for="terminal-fee" class="">Terminal Fee</label>
           <input type="text" id="terminal-fee" name="terminal-fee" readonly
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <span class="text-xs">Principal x P500.00 per person</span>
 
         </div>
@@ -219,7 +252,7 @@
       </div>
     </section>
 
-        <!--SUBMIT BUTTON-->
+    <!--SUBMIT BUTTON-->
     <div class="mt-4 text-right w-full flex justify-center">
       <button id="submit-btn" name="submit-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         onclick="validatePrincipalsSelection()">
@@ -240,6 +273,15 @@
   <script src="/js/validation.js"></script>
   <script src="/js/file.js"></script>
   <script src="/js/invoice.js"></script>
+  <script>
+
+    const menuButton = document.getElementById('menu-button');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    menuButton.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 
 </html>
