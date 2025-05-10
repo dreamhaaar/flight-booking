@@ -8,35 +8,32 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="/js/pdf.js"></script>
-
 </head>
 
 <body class="min-h-screen flex flex-col">
-  <header class="bg-white shadow p-3 flex justify-between items-center">
+  <header class="bg-white shadow p-3 flex justify-between items-center text-xl font-bold sm:text-2xl">
     <div class="flex space-x-4 items-center justify-center">
       <img src="/images/logo.png" alt="" class="logo-header w-14" />
-      <h1 class="text-2xl font-bold center">RP-C8851</h1>
+      <h1 class="hover:underline">RP-C8851</h1>
     </div>
-    <button 
-    onclick="window.history.back()" 
-    class="text-xl font-semibold text-red-700 hover:underline hover:text-red-600 focus:outline-none transition-colors duration-300"
-  >
-    Back to Form
-  </button>
-  
-    
+    <button onclick="window.history.back()"
+      class=" hover:underline hover:text-red-600 focus:outline-none transition-colors duration-300">
+      Back to Form
+    </button>
   </header>
 
-  <div class="flex flex-col items-center mx-auto w-3/5 gap-4">
+  <div class="flex flex-col items-center justify-center gap-4">
     <!-- Flight Information -->
     <section class="max-w-screen-xl w-full mx-auto mt-10 p-10 bg-white rounded-2xl shadow-lg">
       <h3 class="text-xl font-semibold">Booking Flight Details</h3>
       <div class="space-y-4 p-4">
         <div class="flex justify-between items-center">
           <div>
+            <p>Flight Destination</p>
             <p class="text-l font-bold" id="location">
               <%= data["from-location"] %> to <%= data["to-location"] %>
             </p>
+            <p class=" mt-3">Flight Date</p>
             <p class="text-l font-bold" id="date-sched">
               <%= data["date-sched"] %>
             </p>
@@ -55,7 +52,6 @@
     <section class="max-w-screen-xl w-full mx-auto p-10 bg-white rounded-2xl shadow-lg mb-6">
       <h3 class="text-xl font-semibold mb-4">Billing Statement</h3>
       <div class="grid grid-cols-2 gap-4 text-sm">
-
         <p>Flight:</p>
         <p id="flight">
           <%= data["from-location"] %> to <%= data["to-location"] %>
@@ -95,8 +91,7 @@
         <p>Additional Cycle/s:</p>
         <p id="add-cycle">
           <% if (data['add-cycle']==null || data['add-cycle'].length <=0) { %>
-            None
-            <% } else { %>
+            None <% } else { %>
               <%= data["add-cycle"] %>
                 <% } %>
         </p>
@@ -110,11 +105,11 @@
         <p id="total-billed">
           ₱<%= sumBill.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %>
         </p>
-
       </div>
 
       <div class="mt-6 text-right">
-        <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 download-bill" onclick="generatePDF()">
+        <button class="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 download-bill"
+          onclick="generatePDF()">
           Download Billing Statement
         </button>
       </div>
