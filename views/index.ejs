@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Schedule Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Navbar -->
+  <header class="bg-white shadow p-3 flex justify-between items-center">
+    <div class="flex space-x-4 items-center justify-center">
+      <img src="/images/logo.png" alt="" class="logo-header w-14" />
+      <h1 class="text-2xl font-bold center">RP-C8851</h1>
+    </div>
+
+    <nav class="space-x-4">
+      <li class="space-x-6 text-xl font-semibold flex">
+        <ul>
+          Book a Flight
+        </ul>
+        <ul>
+          Contact Us
+        </ul>
+      </li>
+    </nav>
+  </header>
+
+  <form method="POST" action="/billing-statement" id="main-form">
+    <!-- BOOK FLIGHT -->
+    <section class="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow">
+      <h2 class="text-xl font-semibold mb-4 text-center">
+        FLIGHT EXPENSES 2025
+      </h2>
+      <h2 class="text-xl font-semibold mb-4">RP-C8851 BELL 505</h2>
+
+      <!--INPUT FIELDS-->
+      <div class="grid grid-cols-3 gap-5 p-2">
+        <div class="flex flex-col">
+          <input name="from-location" id="from-location" type="text" placeholder="From (e.g. Cebu)"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+          <span id="error-msg1" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
+        </div>
+        <div class="flex flex-col">
+          <input name="to-location" id="to-location" type="text" placeholder="To (e.g. Manila)"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+          <span id="error-msg2" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
+        </div>
+        <div class="flex flex-col">
+          <input name="date-sched" id="date" type="date"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+        </div>
+      </div>
+    </section>
+
+    <!--CLIENT INFORMATION-->
+    <section class="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow">
+      <h3 class="text-xl font-semibold mb-4">Client Information</h3>
+
+      <!--INPUT FIELDS-->
+      <div class="flex grid grid-cols-2 gap-5 p-2">
+        <div class="flex flex-col">
+          <label for="first-name">First name<span class="text-red-600"> *</span></label>
+          <input name="first-name" id="first-name" type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Jose" required />
+          <span id="error-name1" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="last-name" class="">Last name<span class="text-red-600"> *</span></label>
+          <input name="last-name" id="last-name" type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Rizal" required />
+          <span id="error-name2" class="mt-2 text-red-600 text-sm hidden">❌ Only letters and spaces are allowed!</span>
+        </div>
+
+        <div>
+          <label for="email-add" class="">Email address<span class="text-red-600"> *</span></label>
+          <input name="email-add" id="email-add" type="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="jose.rizal@gmail.com" required />
+          <span id="error-email" class="mt-2 text-red-600 text-sm hidden">❌ Enter valid email account!</span>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="phone-num" class="">Phone number<span class="text-red-600"> *</span></label>
+          <input name="phone-num" id="phone-num" type="tel"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="09123456789" required />
+          <span id="error-phone" class="mt-2 text-red-600 text-sm hidden">❌ Enter valid phone number!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPALS -->
+    <section class="max-w-4xl mx-auto mt-8 bg-white p-4 rounded shadow">
+      <h3 class="text-xl font-semibold mb-2">Principals</h3>
+      <h3 class="text-sm mb-4">Note: Please click all that applies<span class="text-red-600"> *</span></h3>
+
+      <!--HOLDER-->
+      <div class="grid grid-cols-2 gap-3 p-2">
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-1" id="checkbox-1" type="checkbox" value="Jojo Alquizola" class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-1" class="text-l text-white">Jojo Alquizola</label>
+        </div>
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-2" id="checkbox-2" type="checkbox" value="Allan Quirante" class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-2" class="text-l text-white">Allan Quirante</label>
+        </div>
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-3" id="checkbox-3" type="checkbox" value="Jonathan Quirante" class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-3" class="text-l text-white">Jonathan Quirante</label>
+        </div>
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-4" id="checkbox-4" type="checkbox" value="Janleven Quirante" class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-4" class="text-l text-white">Janleven Quirante</label>
+        </div>
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-5" id="checkbox-5" type="checkbox" value="QM Builders" class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-5" class="text-l text-white">QM Builders</label>
+        </div>
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input name="checkbox-6" id="checkbox-6" type="checkbox" value="Chartering Services"
+            class="accent-gray-800 principal-checkbox" />
+          <label for="checkbox-6" class="text-l text-white">Chartering Services</label>
+        </div>
+
+        <div class="bg-gray-400 rounded-md p-3 w-full flex items-center space-x-3">
+          <input type="checkbox" id="checkbox-7" name="checkbox-7" class="text-white accent-gray-800 principal-checkbox" />
+          <input type="text" id="other-text" name="other-text" placeholder="Other"
+            class="w-full outline-none text-white placeholder-white bg-transparent" />
+        </div>
+
+        <!-- Error message for validation -->
+        <div id="error-message-principal" class="mt-4 text-red-600 text-sm hidden">❌ Please select at least one option!
+        </div>
+        <input type="hidden" name="selectedNames" id="selectedNames">
+
+
+      </div>
+    </section>
+
+    <!--FLIGHT BILL INFORMATION -->
+    <section class="max-w-4xl mx-auto mt-8 bg-white p-4 rounded shadow">
+      <h3 class="text-xl font-semibold mb-4">Flight Bill Information</h3>
+      <div class="grid grid-cols-2 gap-6 p-2">
+        <div class="mb-4">
+          <label for="block-time" class="">Total Block time in Hour/s <span class="text-red-600"> *</span></label>
+          <input type="text" id="block-time" name="block-time" autocomplete="off"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+          <span class="text-xs">Block Time x P65,000.00 per hour</span>
+          <div id="error-message-block-time" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="block-time-min" class="">Total Block time in Minutes</label>
+          <input type="text" id="block-time-min" name="block-time-min" autocomplete="off" readonly
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          <span class="text-xs">Block Time x P65,000.00 per hour</span>
+        </div>
+
+        <div class="mb-4">
+          <label for="take-off-land-fee" class="">Take-off and Landing Fee<span class="text-red-600"> *</span></label>
+          <input type="text" id="take-off-land-fee" name="take-off-land-fee" autocomplete="off"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required />
+          <span class="text-xs">Fixed at P5,000.00 for 1 cycle</span>
+          <div id="error-message-take-off" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="add-cycle" class="">Additional Cycle/s</label>
+          <input type="text" id="add-cycle" name="add-cycle"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          <span class="text-xs">For more than 1 cycle (No. of Cycle less 1 x P2,000.00 per
+            cycle)</span>
+          <div id="error-add-cycle" class="mt-4 text-red-600 text-sm hidden">❌ Please enter the time in hours. Use decimals for minutes (e.g., 1.5 for 1 hour 30 minutes and 0.5 for 30 minutes)
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="terminal-fee" class="">Terminal Fee</label>
+          <input type="text" id="terminal-fee" name="terminal-fee" readonly
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+          <span class="text-xs">Principal x P500.00 per person</span>
+
+        </div>
+
+        <div class="mb-4">
+          <label for="other-req" class="">Other Requirements</label>
+          <input type="tex" id="other-req" name="other-req"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+
+        <div class="mb-4">
+          <span class="block text-gray-800 mb-2">
+            Other Requirements Attachment
+          </span>
+
+          <label for="fileInput"
+            class="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded cursor-pointer hover:bg-gray-300 transition labelAttachment">
+            Add file
+            <input type="file" id="fileInput" name="fileInput" class="hidden" onchange="showFile()" />
+            <p id="fileNameDisplay" class="mt-3 text-sm text-red-600 hidden"></p>
+          </label>
+        </div>
+
+
+      </div>
+    </section>
+    <!--SUBMIT BUTTON-->
+    <div class="mt-4 text-right w-full">
+      <button id="submit-btn" name="submit-btn" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+        onclick="validatePrincipalsSelection()">
+        Continue to Billing
+      </button>
+    </div>
+
+  </form>
+
+
+  <!-- FOOTER -->
+  <footer class="text-center text-sm text-gray-500 mt-12 p-4 flex justify-content flex-col items-center">
+    <img src="/images/company.png" alt="" class="logo-header h-10" /><img />
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script src="/js/validation.js"></script>
+  <script src="/js/file.js"></script>
+  <script src="/js/invoice.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passing</title>
+</head>
+<body>
+  <form action="get">
+    <label for="input-text"></label>
+    <input type="text" name="input-text" id="input-text">
+    <button id="get-btn">GET</button>
+    <button id="post-btn">POST</button>
+  </form>
+  <script src="server.js"></script>
+  <script>
+    const input = document.getElementById('input-text');
+    const getBtn = document.getElementById('get-btn');
+    const postBtn = document.getElementById('post-btn');
+  </script>
+</body>
+</html>
